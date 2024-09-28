@@ -4,36 +4,107 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+ body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+#links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+#links div a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.sort-filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.sort-filter-container select {
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+td:nth-child(5) {
+  text-align: center;
+}
+
+td:nth-child(5):hover {
+  cursor: pointer;
+  color: #007bff;
+}
+
+    </style>
   </head>
   <body>
     <div id="links">
       <div><a href="./index.html">Home</a></div>
-      <div><a href="./application.html">Applied Jobs</a></div>
+     
       <div><a href="./bookmark.html">Bookmarks</a></div>
     </div>
 
     <!-- sort by names -->
-
-    <select id="sortNames" onChange="handleNameSort()">
-      <option value="">Sort by Name</option>
-      <option value="asc">Ascending</option>
-      <option value="dsc">Descending</option>
-    </select>
-
-    <!-- sort by salary  -->
-    <select id="sortSalary" onChange="handleSalarySort()">
-      <option value="">Sort by Salary</option>
-      <option value="HTL">High to Low</option>
-      <option value="LTH">Low to High</option>
-    </select>
-
-    <!-- filter role  -->
-    <select id="filterRole" onChange="handleFilter()">
-      <option value="">Filter Category</option>
-      <option value="fsd">FSD</option>
-      <option value="frontend">FrontEnd</option>
-      <option value="backend">BackEnd</option>
-    </select>
+    <div class="sort-filter-container">
+      <!-- sort by names -->
+      <div class="sort-filter-item">
+        <select id="sortNames" onChange="handleNameSort()">
+          <option value="">Sort by Name</option>
+          <option value="asc">Ascending</option>
+          <option value="dsc">Descending</option>
+        </select>
+      </div>
+    
+      <!-- sort by salary  -->
+      <div class="sort-filter-item">
+        <select id="sortSalary" onChange="handleSalarySort()">
+          <option value="">Sort by Salary</option>
+          <option value="HTL">High to Low</option>
+          <option value="LTH">Low to High</option>
+        </select>
+      </div>
+    
+      <!-- filter role  -->
+      <div class="sort-filter-item">
+        <select id="filterRole" onChange="handleFilter()">
+          <option value="">Filter Category</option>
+          <option value="fsd">FSD</option>
+          <option value="frontend">FrontEnd</option>
+          <option value="backend">BackEnd</option>
+        </select>
+      </div>
+    </div>
 
     <main>
       <table border="1">
@@ -156,6 +227,8 @@
       td5.innerText = "Bookmark";
       td5.addEventListener("click", function () {
         bookMarkFun(elem);
+        td5.innerText = "Added";
+        td5.style.color = "green";
       });
 
       tr.append(td1, td2, td3, td4, td5);
